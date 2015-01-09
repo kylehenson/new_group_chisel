@@ -16,4 +16,25 @@ class ChiselTest < Minitest::Test
     assert_equal "<p>kyra</p>", @chisel.parse(document)
   end
 
+  def test_it_parses_a_one_line_header
+    document = "#Kyra"
+    assert_equal "<h1>Kyra</h1>", @chisel.parse(document)
+  end
+
+  def test_it_parses_a_two_line_paragraph
+    document = "kyra\nweber"
+    assert_equal "<p>kyra\nweber</p>", @chisel.parse(document)
+  end
+
+  def test_it_seperates_doc_into_chunks
+    document = "kyra\n\nweber"
+    assert_equal ["kyra", "weber"], @chisel.get_chunks(document)
+  end
+
+  def test_it_parses_two_different_chunks
+    skip
+    document = "#food\n\nfood is good."
+    assert_equal "<h1>food</h1\n\n<p>food is good</p>", @chisel.parse(document)
+  end
+
 end
