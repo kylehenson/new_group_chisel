@@ -13,14 +13,21 @@ class EmphasizeTest < Minitest::Test
     assert @emph
   end
 
-  def test_it_renders
+  def test_it_renders_one_word
     assert_equal '<em>ice</em>', @emph.render
   end
 
-  def test_it_renders_in_a_line
+  def test_it_renders_one_word_in_a_line
     document = '*ice* cream'
     emph = Emphasize.new(document)
     assert_equal '<em>ice</em> cream', emph.render
+  end
+
+  def test_it_renders_two_words
+    ####FAIL
+    document = '*ice cream* is so good.'
+    emph = Emphasize.new(document)
+    assert_equal '<em>ice cream</em> is so good', emph.render
   end
 
 
