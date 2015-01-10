@@ -5,7 +5,7 @@ require_relative '../lib/ordered_list'
 class OrderedListTest < Minitest::Test
 
   def setup
-    document = "ice cream:\n1. strawberry\n1. chocolate\n1. caramel"
+    document = "1. strawberry\n1. chocolate\n1. caramel"
     @list = OrderedList.new(document)
   end
 
@@ -14,8 +14,7 @@ class OrderedListTest < Minitest::Test
   end
 
   def test_it_renders
-    skip #this does work
-    assert_equal "<ol>ice cream\n<li>strawberry</li>\n<li>chocolate</li>\n<li>caramel</li>\n</ol>", @list.render
+    assert_equal "<ol>\n<li>strawberry</li>\n<li>chocolate</li>\n<li>caramel</li>\n</ol>", @list.render
   end
 
 

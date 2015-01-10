@@ -32,9 +32,13 @@ class ChiselTest < Minitest::Test
   end
 
   def test_it_parses_two_different_chunks
-    skip
-    document = "#food\n\nfood is good."
-    assert_equal "<h1>food</h1\n\n<p>food is good</p>", @chisel.parse(document)
+    document = "#food\n\nfood is good"
+    assert_equal "<h1>food</h1>\n\n<p>food is good</p>", @chisel.parse(document)
+  end
+
+  def test_it_parses_two_chunks_with_two_lines_each
+    document = "this is a paragraph\nthis is the same paragraph\n\n##this is a header"
+    assert_equal "<p>this is a paragraph\nthis is the same paragraph</p>\n\n<h2>this is a header</h2>", @chisel.parse(document)
   end
 
 end

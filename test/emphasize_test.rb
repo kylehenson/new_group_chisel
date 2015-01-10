@@ -5,7 +5,7 @@ require_relative '../lib/emphasize'
 class EmphasizeTest < Minitest::Test
 
   def setup
-    document = '*ice cream*'
+    document = '*ice*'
     @emph = Emphasize.new(document)
   end
 
@@ -14,7 +14,13 @@ class EmphasizeTest < Minitest::Test
   end
 
   def test_it_renders
-    assert_equal '<em>ice cream</em>', @emph.render
+    assert_equal '<em>ice</em>', @emph.render
+  end
+
+  def test_it_renders_in_a_line
+    document = '*ice* cream'
+    emph = Emphasize.new(document)
+    assert_equal '<em>ice</em> cream', emph.render
   end
 
 

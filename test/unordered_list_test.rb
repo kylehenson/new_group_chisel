@@ -5,7 +5,7 @@ require_relative '../lib/unordered_list'
 class UnorderedListTest < Minitest::Test
 
   def setup
-    document = "ice cream:\n- strawberry\n- chocolate\n- caramel"
+    document = "* strawberry\n* chocolate\n* caramel"
     @list = UnorderedList.new(document)
   end
 
@@ -14,7 +14,7 @@ class UnorderedListTest < Minitest::Test
   end
 
   def test_it_renders
-    assert_equal "<ul>ice cream:\n<li>strawberry</li>\n<li>chocolate</li>\n<li>caramel</li>\n</ul>", @list.render
+    assert_equal "<ul>\n<li>strawberry</li>\n<li>chocolate</li>\n<li>caramel</li>\n</ul>", @list.render
   end
 
 
