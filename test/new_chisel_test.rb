@@ -41,4 +41,9 @@ class ChiselTest < Minitest::Test
     assert_equal "<p>this is a paragraph\nthis is the same paragraph</p>\n\n<h2>this is a header</h2>", @chisel.parse(document)
   end
 
+  def test_it_parses_strong_and_emphasized_in_same_chunk
+    document = "* **dentist**\n* *groceries*"
+    assert_equal "<ul>\n<li><strong>dentist</strong></li>\n<li><em>groceries</em></li>\n</ul>", @chisel.parse(document)
+  end
+
 end

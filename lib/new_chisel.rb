@@ -28,10 +28,13 @@ class Chisel
         puts "Please review your markdown syntax."
       end
     end
-    
+
     final_html = html.map do |chunk|
       element_checker = ElementChecker.new(chunk)
-      if element_checker.strong?
+      if element_checker.strong? && element_checker.emphasized?
+        new_chunk = Strong.new(chunk).render
+        Emphasize.new(new_chunk).render
+      elsif element_checker.strong?
         Strong.new(chunk).render
       elsif element_checker.emphasized?
         Emphasize.new(chunk).render
@@ -43,5 +46,5 @@ class Chisel
   end
 
 end
-# chisel = Chisel.new
-# puts chisel.parse("#Hello,\n\nkyra")
+chisel = Chisel.new
+puts chisel.parse("#Hello,\n\nkyra\n\n* call mom\n* **dentist**\n* *groceries*")
