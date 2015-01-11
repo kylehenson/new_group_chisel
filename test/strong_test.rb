@@ -17,4 +17,10 @@ class StrongTest < Minitest::Test
     assert_equal "<strong>ice cream</strong>", @strong.render
   end
 
+  def test_it_selects_strong_elements_from_string
+    document = 'I **really** like ice cream'
+    strong = Strong.new(document)
+    assert_equal "I <strong>really</strong> like ice cream", strong.render
+  end
+  
 end
