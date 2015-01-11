@@ -1,19 +1,17 @@
 class Header
+  attr_reader :chunk
 
   def initialize(chunk)
     @chunk = chunk
   end
 
   def render
-    if @chunk[0..2] == '###'
-      markdown = @chunk.gsub('###', '<h3>')
-      markdown + "</h3>"
-    elsif @chunk[0..1] == "##"
-      markdown = @chunk.gsub('##', '<h2>')
-      markdown + "</h2>"
+    if chunk[0..2] == '###'
+      chunk.gsub('###', '<h3>') + "</h3>"
+    elsif chunk[0..1] == "##"
+      chunk.gsub('##', '<h2>') + "</h2>"
     else
-      markdown = @chunk.gsub('#', '<h1>')
-      markdown + "</h1>"
+      chunk.gsub('#', '<h1>') + "</h1>"
     end
   end
 

@@ -28,6 +28,7 @@ class Chisel
         puts "Please review your markdown syntax."
       end
     end
+    
     final_html = html.map do |chunk|
       element_checker = ElementChecker.new(chunk)
       if element_checker.strong?
