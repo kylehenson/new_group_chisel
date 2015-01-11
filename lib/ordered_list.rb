@@ -7,16 +7,10 @@ class OrderedList
   def render
     lines = @chunk.split("\n")
 
-    list_items = []
-    lines.each do |line|
-      if line =~ /\A\d.\s/
-        line = line.gsub(/\A\d.\s/,'<li>')
-        list_item = line + '</li>'
-        list_items << list_item
-      end
+    list_items = lines.map do |line|
+        line.gsub(/\A\d.\s/,'<li>') + '</li>'
     end
-    list = list_items.join("\n")
-    "<ol>\n#{list}\n</ol>"
+    "<ol>\n#{list_items.join("\n")}\n</ol>"
   end
 
 end
