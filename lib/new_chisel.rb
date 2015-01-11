@@ -17,17 +17,13 @@ class Chisel
     html = chunks.map do |chunk|
       element_checker = ElementChecker.new(chunk)
       if element_checker.paragraph?
-        paragraph = Paragraph.new(chunk)
-        paragraph.render
+        Paragraph.new(chunk).render
       elsif element_checker.header?
-        header = Header.new(chunk)
-        header.render
+        Header.new(chunk).render
       elsif element_checker.ordered_list?
-        list = OrderedList.new(chunk)
-        list.render
+        OrderedList.new(chunk).render
       elsif element_checker.unordered_list?
-        list = UnorderedList.new(chunk)
-        list.render
+        UnorderedList.new(chunk).render
       else
         puts "Please review your markdown syntax."
       end
@@ -35,11 +31,9 @@ class Chisel
     final_html = html.map do |chunk|
       element_checker = ElementChecker.new(chunk)
       if element_checker.strong?
-        strong = Strong.new(chunk)
-        strong.render
+        Strong.new(chunk).render
       elsif element_checker.emphasized?
-        emph = Emphasize.new(chunk)
-        emph.render
+        Emphasize.new(chunk).render
       else
         chunk
       end
