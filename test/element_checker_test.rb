@@ -55,7 +55,6 @@ class ElementCheckerTest < Minitest::Test
   end
 
   def test_it_checks_for_ordered_lists
-    #FAIL
     line = '2. header'
     checker = ElementChecker.new(line)
     output = checker.ordered_list?
