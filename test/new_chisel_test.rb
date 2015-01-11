@@ -13,17 +13,17 @@ class ChiselTest < Minitest::Test
 
   def test_it_has_parse_method
     document = "kyra"
-    assert_equal "<p>kyra</p>", @chisel.parse(document)
+    assert_equal "<p>kyra</p>", @chisel.parse
   end
 
   def test_it_parses_a_one_line_header
     document = "#Kyra"
-    assert_equal "<h1>Kyra</h1>", @chisel.parse(document)
+    assert_equal "<h1>Kyra</h1>", @chisel.parse
   end
 
   def test_it_parses_a_two_line_paragraph
     document = "kyra\nweber"
-    assert_equal "<p>kyra\nweber</p>", @chisel.parse(document)
+    assert_equal "<p>kyra\nweber</p>", @chisel.parse
   end
 
   def test_it_seperates_doc_into_chunks
@@ -33,17 +33,17 @@ class ChiselTest < Minitest::Test
 
   def test_it_parses_two_different_chunks
     document = "#food\n\nfood is good"
-    assert_equal "<h1>food</h1>\n\n<p>food is good</p>", @chisel.parse(document)
+    assert_equal "<h1>food</h1>\n\n<p>food is good</p>", @chisel.parse
   end
 
   def test_it_parses_two_chunks_with_two_lines_each
     document = "this is a paragraph\nthis is the same paragraph\n\n##this is a header"
-    assert_equal "<p>this is a paragraph\nthis is the same paragraph</p>\n\n<h2>this is a header</h2>", @chisel.parse(document)
+    assert_equal "<p>this is a paragraph\nthis is the same paragraph</p>\n\n<h2>this is a header</h2>", @chisel.parse
   end
 
   def test_it_parses_strong_and_emphasized_in_same_chunk
     document = "* **dentist**\n* *groceries*"
-    assert_equal "<ul>\n<li><strong>dentist</strong></li>\n<li><em>groceries</em></li>\n</ul>", @chisel.parse(document)
+    assert_equal "<ul>\n<li><strong>dentist</strong></li>\n<li><em>groceries</em></li>\n</ul>", @chisel.parse
   end
 
 end
