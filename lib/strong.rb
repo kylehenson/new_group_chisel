@@ -6,8 +6,7 @@ class Strong
 
   def render
     to_be_strong = @chunk.match(/[*]{2}(.*)[*]{2}/)[1]
-    has_strength = "<strong>" + to_be_strong + "</strong>"
-    @chunk.gsub(/[*]{2}(.*)[*]{2}/, has_strength)
+    @chunk.gsub(/[*]{2}(.*)[*]{2}/, "<strong>" + to_be_strong + "</strong>")
   end
 
 end
