@@ -23,7 +23,7 @@ class EmphasizeTest < Minitest::Test
     assert_equal '<em>ice</em> cream', emph.render
   end
 
-  def test_it_renders_two_words
+  def test_it_renders_two_words_in_a_line
     chunk = '*ice cream* is so good.'
     emph = Emphasize.new(chunk)
     assert_equal '<em>ice cream</em> is so good.', emph.render
