@@ -8,7 +8,7 @@ class UnorderedList
     lines = @chunk.split("\n")
 
     list_items = lines.map do |line|
-        line.gsub(/\A\W\s/,'  <li>') + '</li>'
+        line.gsub(/\A\W\s/,'<li>')+'</li>'
       end
 
     "<ul>\n#{list_items.join("\n")}\n</ul>"

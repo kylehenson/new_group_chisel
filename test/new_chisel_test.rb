@@ -1,6 +1,6 @@
 require_relative '../lib/new_chisel'
 
-class ChiselTest < Minitest::Test
+class NewChiselTest < Minitest::Test
 
   def setup
     @chisel = Chisel.new

@@ -31,4 +31,8 @@ class ElementChecker
     return true if chunk =~ /\A\d.\s/
   end
 
+  def block_quote?
+    chunk.include?('>')
+  end
+
 end
