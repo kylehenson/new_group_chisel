@@ -8,17 +8,11 @@ require_relative 'emphasize'
 
 class Chisel
 
-  def load_file
-    document = ARGV.first
-    File.read(document)
-  end
-
   def get_chunks(document)
     document.split("\n\n")
   end
 
-  def parse
-    document = load_file
+  def parse(document)
     chunks = get_chunks(document)
     html = chunks.map do |chunk|
       element_checker = ElementChecker.new(chunk)
@@ -52,5 +46,3 @@ class Chisel
   end
 
 end
-chisel = Chisel.new
-puts chisel.parse
